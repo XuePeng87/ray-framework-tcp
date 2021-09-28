@@ -1,0 +1,31 @@
+ray:
+  framework:
+    tcp:
+      host: 127.0.0.1
+      port: 10001
+      work-count: 4
+      option:
+        back-log: 1024
+        connect-timeout: 5000
+      idle-state:
+        reader-idle-time: 60
+        writer-idle-time: 0
+        all-idle-time: 0
+      protocol-decoder:
+        max-frame-length: 65535
+        length-field-offset: 22
+        length-field-length: 2
+        length-adjustment: 1
+        initial-bytes-to-strip: 0
+        fail-fast: true
+      disruptor:
+        buffer-size: 1024
+        consumer-count: 4
+        consumer-thread-pool:
+          core-size: 4
+          maximun-size: 8
+          keep-alive-time: 5
+          work-queue-size: 128
+logging:
+  level:
+    root: debug
